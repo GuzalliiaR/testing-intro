@@ -25,7 +25,21 @@ function addToCart(cart, product, count) {
   return cart;
 }
 
-function changeQuantity() { return notImplemented(); }
+function changeQuantity(cart, id, count) {
+  const changedProduct = cart.find((prod) => prod.id === id);
+
+  if (!changedProduct) return cart;
+  if (count === 0) {
+    throw new RangeError('Нельзя в корзину добавить нулевое количество товара.');
+  }
+  if (count > changedProduct.stock) {
+    throw new RangeError('Нельзя в корзину добавить товара больше чем есть на складе.');
+  };
+  
+  changedProduct.quantity = count;
+  return cart;
+}
+
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
