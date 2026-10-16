@@ -1,7 +1,3 @@
-function notImplemented() {
-  throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
-}
-
 function addToCart(cart, product, count) {
   if (count === 0) throw new RangeError('Нельзя в корзину добавить нулевое количество товара.');
   if (count > product.stock) {
